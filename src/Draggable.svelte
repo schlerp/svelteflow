@@ -1,7 +1,6 @@
 <script lang="ts">
   import { onMount, createEventDispatcher } from "svelte";
   import type { BrowserJsPlumbInstance } from "@jsplumb/browser-ui";
-  import interact from "interactjs";
   import { nanoid } from "nanoid/non-secure";
 
   export let id: string = nanoid();
@@ -9,8 +8,6 @@
   export let headerText: string = undefined;
   export let footerText: string = undefined;
   export let jsPlumbInstance: BrowserJsPlumbInstance;
-
-  const dispatch = createEventDispatcher();
 
   let element: HTMLDivElement;
   let x = 0;
