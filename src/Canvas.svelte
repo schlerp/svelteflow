@@ -1,6 +1,8 @@
 <script lang="ts">
   import { onMount, afterUpdate } from "svelte";
   import { BrowserJsPlumbInstance, newInstance } from "@jsplumb/browser-ui";
+  import type { ConnectionEstablishedParams } from "@jsplumb/core";
+  import { EVENT_CONNECTION } from "@jsplumb/core";
   import { nanoid } from "nanoid/non-secure";
   import type { IDraggable, IDragMoveEvent } from "./types";
   import { nodeStore } from "./store";
@@ -8,8 +10,11 @@
 
   let canvasElement: HTMLDivElement;
   let nodes: IDraggable[] = [];
-
   let jsPlumbInstance: BrowserJsPlumbInstance;
+
+  function handleConnection(params: ConnectionEstablishedParams) {
+    console.debug(params);
+  }
 
   onMount(() => {
     const spacing = Number.parseInt(
@@ -21,13 +26,14 @@
         grid: { w: spacing, h: spacing },
       },
     });
+    jsPlumbInstance.bind(EVENT_CONNECTION, handleConnection);
   });
 
   nodeStore.subscribe((value) => {
     nodes = value;
   });
 
-  const addNode = (event) => {
+  function addNode(event: MouseEvent) {
     const randomId: string = nanoid();
     const options = {
       content: "new element!",
@@ -41,7 +47,7 @@
         footerText: nanoid(),
       },
     ]);
-  };
+  }
 </script>
 
 <div bind:this={canvasElement} class="canvas">

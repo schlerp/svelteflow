@@ -1,7 +1,12 @@
 <script lang="ts">
-  import { onMount, createEventDispatcher } from "svelte";
+  import { onMount } from "svelte";
   import type { BrowserJsPlumbInstance } from "@jsplumb/browser-ui";
   import { nanoid } from "nanoid/non-secure";
+  import Connectable from "./Connectable.svelte";
+  import InputControl from "./InputControl.svelte";
+  import ConnectableForm from "./ConnectableForm.svelte";
+  import TableForm from "./TableForm.svelte";
+  import ColumnControlGroup from "./ColumnControlGroup.svelte";
 
   export let id: string = nanoid();
   export let content: string = undefined;
@@ -10,41 +15,16 @@
   export let jsPlumbInstance: BrowserJsPlumbInstance;
 
   let element: HTMLDivElement;
-  let x = 0;
-  let y = 0;
 
   onMount(() => {
+    console.debug("Draggable element", element);
     jsPlumbInstance.manage(element);
     jsPlumbInstance.setDraggable(element, true);
-    jsPlumbInstance.addEndpoint(element, { endpoint: "Dot" });
-    // interact(element)
-    //   .draggable({
-    //     modifiers: [
-    //       interact.modifiers.snap({
-    //         targets: [interact.snappers.grid({ x: spacing, y: spacing })],
-    //         range: Infinity,
-    //         relativePoints: [{ x: 0, y: 0 }],
-    //       }),
-    //       interact.modifiers.restrict({
-    //         restriction: "parent",
-    //         elementRect: { top: 0, left: 0, bottom: 1, right: 1 },
-    //         endOnly: true,
-    //       }),
-    //     ],
-    //     inertia: false,
-    //   })
-    //   .on("dragmove", function (event) {
-    //     x += event.dx;
-    //     y += event.dy;
-
-    //     event.target.style.transform = "translate(" + x + "px, " + y + "px)";
-    //   })
-    //   .on("dragend", function (event) {
-    //     const eventData = { id, x: event.dx, y: event.dy };
-    //     console.debug("dragend", eventData);
-    //     dispatch("dragend", eventData);
-    //   });
   });
+
+  let value: string = "";
+
+  $: console.debug(value);
 </script>
 
 <div {id} class="draggableWrapper" bind:this={element}>
@@ -55,7 +35,20 @@
   {/if}
   {#if content !== undefined}
     <section>
-      {content}
+      <!-- {content}
+      <Connectable {jsPlumbInstance}>
+        <InputControl name="derp" label="derp" bind:value />
+      </Connectable>
+      <ConnectableForm {jsPlumbInstance} /> -->
+      <TableForm {jsPlumbInstance} />
+      <!-- <ColumnControlGroup
+        columnDefinition={{
+          name: "derp",
+          isPk: true,
+          isNullable: false,
+          isUnique: true,
+        }}
+      /> -->
     </section>
   {/if}
   <slot />
