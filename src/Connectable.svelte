@@ -1,11 +1,11 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import type { BrowserJsPlumbInstance } from "@jsplumb/browser-ui";
-  import { nanoid } from "nanoid/non-secure";
+  import safeid from "./utils/safeid";
 
   export let isSource: Boolean = true;
   export let isTarget: Boolean = true;
-  export let id: string = nanoid();
+  export let id: string = safeid();
   export let jsPlumbInstance: BrowserJsPlumbInstance;
 
   let element: HTMLDivElement;

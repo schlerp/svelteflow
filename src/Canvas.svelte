@@ -1,12 +1,13 @@
 <script lang="ts">
-  import { onMount, afterUpdate } from "svelte";
+  import { onMount } from "svelte";
   import { BrowserJsPlumbInstance, newInstance } from "@jsplumb/browser-ui";
   import type { ConnectionEstablishedParams } from "@jsplumb/core";
   import { EVENT_CONNECTION } from "@jsplumb/core";
-  import { nanoid } from "nanoid/non-secure";
-  import type { IDraggable, IDragMoveEvent } from "./types";
+  import safeid from "./utils/safeid";
+  import type { IDraggable } from "./types";
   import { nodeStore } from "./store";
   import Draggable from "./Draggable.svelte";
+  import ButtonControl from "./ButtonControl.svelte";
 
   let canvasElement: HTMLDivElement;
   let nodes: IDraggable[] = [];
@@ -34,17 +35,17 @@
   });
 
   function addNode(event: MouseEvent) {
-    const randomId: string = nanoid();
+    const randomId: string = safeid();
     const options = {
       content: "new element!",
     };
     nodeStore.set([
       ...nodes,
       {
-        content: nanoid(),
-        id: nanoid(),
-        headerText: nanoid(),
-        footerText: nanoid(),
+        content: safeid(),
+        id: safeid(),
+        headerText: safeid(),
+        footerText: safeid(),
       },
     ]);
   }
@@ -55,7 +56,9 @@
     <svelte:component this={Draggable} {...node} {jsPlumbInstance} />
   {/each}
 </div>
-<button on:click={addNode}>add element</button>
+<div class="buttonWrapper">
+  <ButtonControl handleClick={addNode}>add element</ButtonControl>
+</div>
 
 <style>
   .canvas {
@@ -76,7 +79,7 @@
       );
     background-size: 100% var(--spacing), var(--spacing) 100%;
   }
-  button {
+  .buttonWrapper {
     position: absolute;
     bottom: var(--spacing);
     right: var(--spacing);

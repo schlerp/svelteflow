@@ -1,8 +1,10 @@
 <script lang="ts">
   import Canvas from "./Canvas.svelte";
+  import Theme from "./Theme.svelte";
 </script>
 
 <main>
+  <Theme />
   <Canvas />
 </main>
 

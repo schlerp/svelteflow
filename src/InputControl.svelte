@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { nanoid } from "nanoid/non-secure";
+  import safeid from "./utils/safeid";
   import type { IInputType } from "./types";
 
-  export let name: string = nanoid();
+  export let name: string = safeid();
   export let type: IInputType = "text";
   export let label: string = name;
   export let disabled: boolean = false;
@@ -41,7 +41,7 @@
     border: 1px solid #aaa;
     border-radius: var(--spacing);
     position: relative;
-    margin-top: calc(2 * var(--spacing));
+    margin-top: var(--spacing);
   }
   input {
     width: calc(100% - calc(2 * var(--spacing)));

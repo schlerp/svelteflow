@@ -1,22 +1,23 @@
 <script lang="ts">
-  import { nanoid } from "nanoid/non-secure";
+  import safeid from "./utils/safeid";
   import type { IColumnDefinition } from "./types";
 
   export let columnDefinition: IColumnDefinition;
   export let disabled: boolean = false;
-  let id: string = nanoid();
+  let id: string = safeid();
 </script>
 
 <div class="wrapper">
   <div class="grow">
     <label for={`name_${id}`} class="textLabel">
-      Column: {columnDefinition["name"]}
+      {columnDefinition["name"] !== "" ? columnDefinition["name"] : `col_${id}`}
     </label>
     <input
       id={`name_${id}`}
       type="text"
       name="name"
       bind:value={columnDefinition["name"]}
+      pattern="[A-Za-z_]+[A-Za-z0-9_]*"
       {disabled}
     />
   </div>
@@ -57,10 +58,10 @@
     display: flex;
     flex-direction: row;
     width: calc(100% - var(--spacing));
-    border: 1px solid #aaa;
+    border: 1px solid var(--pal-info);
     border-radius: var(--spacing);
     position: relative;
-    margin-top: calc(2 * var(--spacing));
+    margin-top: var(--spacing);
     padding-right: var(--spacing);
   }
   .tooltip {
@@ -69,7 +70,7 @@
     left: calc(100% + var(--spacing));
     white-space: nowrap;
     background-color: #444;
-    color: #fafafa;
+    color: var(--pal-light);
     z-index: 10;
     text-align: center;
     border-radius: var(--spacing);
@@ -121,7 +122,14 @@
     text-overflow: ellipsis;
   }
   input:checked + label {
-    color: #444;
+    color: var(--pal-success);
     box-shadow: #ccc 1px 1px 2px;
+  }
+  input:invalid {
+    color: var(--pal-error);
+  }
+  input:invalid {
+    color: var(--pal-error);
+    border-bottom: 1px solid var(--pal-error);
   }
 </style>

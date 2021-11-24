@@ -1,14 +1,15 @@
 <script lang="ts">
-  import { nanoid } from "nanoid/non-secure";
+  import safeid from "./utils/safeid";
   import type { BrowserJsPlumbInstance } from "@jsplumb/browser-ui";
   import InputControl from "./InputControl.svelte";
   import Connectable from "./Connectable.svelte";
   import type { IColumnDefinition, ITableDefinition } from "./types";
   import { SvelteComponent } from "svelte/internal";
   import ColumnControlGroup from "./ColumnControlGroup.svelte";
+  import ButtonControl from "./ButtonControl.svelte";
 
   export let jsPlumbInstance: BrowserJsPlumbInstance;
-  export let table: string = `table_${nanoid(8)}`;
+  export let table: string = `table_${safeid()}`;
   export let schema: string = "";
   export let database: string = "";
   export let columns: IColumnDefinition[] = [];
@@ -21,7 +22,7 @@
   };
 
   function handleAddColumn(event: MouseEvent) {
-    const name: string = `col_${nanoid(8)}`;
+    const name: string = `col_${safeid()}`;
     const columnDefinition = {
       name,
       isPk: false,
@@ -68,5 +69,13 @@
       <ColumnControlGroup bind:columnDefinition={column} />
     </Connectable>
   {/each}
-  <button on:click|preventDefault={handleAddColumn}>Add Column</button>
+  <ButtonControl handleClick={handleAddColumn}>Add Column</ButtonControl>
 </form>
+
+<style>
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing);
+  }
+</style>
