@@ -10,7 +10,7 @@
 <style>
   button {
     background-color: var(--pal-info);
-    color: var(--pal-light);
+    color: var(--pal-text-light);
     border-radius: var(--spacing);
     padding: var(--spacing);
   }

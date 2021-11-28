@@ -37,6 +37,20 @@
   dependencies:
     "@jsplumb/util" "5.0.8"
 
+"@jsplumb/common@5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@jsplumb/common/-/common-5.1.1.tgz#e8ffb398bd8e8ac79da737500cce8e0ca48d3c01"
+  integrity sha512-v43JbQ7tkumAYMprJF6qQJ1jfSEcBDOu5h7ZCfIDXU27PVvGLQuWWJZfxx8QWAaRbD5uhpi+Cy6FkF0YKi5iQQ==
+  dependencies:
+    "@jsplumb/util" "5.1.1"
+
+"@jsplumb/connector-bezier@^5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@jsplumb/connector-bezier/-/connector-bezier-5.1.1.tgz#b90d56febad457e742c6503c1dad0069101c5846"
+  integrity sha512-QDwoXoUJbcdGniDxhfSbHpptlFOielHM2L8zS3Gq3kFQsJPvfmTe+yNq7ibTcTCu2VWzhkm3pdvqdYJNHH+HLA==
+  dependencies:
+    "@jsplumb/core" "5.1.1"
+
 "@jsplumb/core@5.0.8", "@jsplumb/core@^5.0.8":
   version "5.0.8"
   resolved "https://registry.yarnpkg.com/@jsplumb/core/-/core-5.0.8.tgz#db5cc11aa849ad3c98f883ec6755c3a413ce0deb"
@@ -44,10 +58,22 @@
   dependencies:
     "@jsplumb/common" "5.0.8"
 
+"@jsplumb/core@5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@jsplumb/core/-/core-5.1.1.tgz#406d563b4976d8fa122908897dffe5e9ef3eef44"
+  integrity sha512-pD32LboTzMD7l/ynZQLuSb7y/n0eUqYkVFGqyYGEBvKhHn3QTO+50kTt/N+qFElFz8RnQ//0ij0SBo2IZ2hYcw==
+  dependencies:
+    "@jsplumb/common" "5.1.1"
+
 "@jsplumb/util@5.0.8":
   version "5.0.8"
   resolved "https://registry.yarnpkg.com/@jsplumb/util/-/util-5.0.8.tgz#3e98a37144b3a0ca50dec1485a94975b17510c7f"
   integrity sha512-yoLiMo3Zs3NPUOhcq7bDQmIOqvMhxyjbI/eUmrqrya76XOqNhu0lrs7LCygBJh6K4J1btl9BuobECN3SQStv4g==
+
+"@jsplumb/util@5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@jsplumb/util/-/util-5.1.1.tgz#de2542df2b38645848d495bf398556b691d63ce2"
+  integrity sha512-hG2QaCRt6E/NmvFiSXzSPim55AGl+bRqEpKtfZ0LVypBup3/PilIGLMgRK7Zstw9EQR8orWyECigUbt5z2aMmQ==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"

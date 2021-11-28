@@ -1,10 +1,9 @@
 <script lang="ts">
-  import safeid from "./utils/safeid";
-  import type { IColumnDefinition } from "./types";
+  import type { IColumnDefinition } from "../types";
 
   export let columnDefinition: IColumnDefinition;
   export let disabled: boolean = false;
-  let id: string = safeid();
+  export let id: string;
 </script>
 
 <div class="wrapper">
@@ -57,8 +56,9 @@
   .wrapper {
     display: flex;
     flex-direction: row;
-    width: calc(100% - var(--spacing));
-    border: 1px solid var(--pal-info);
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid var(--pal-border);
     border-radius: var(--spacing);
     position: relative;
     margin-top: var(--spacing);
@@ -69,7 +69,7 @@
     display: none;
     left: calc(100% + var(--spacing));
     white-space: nowrap;
-    background-color: #444;
+    background-color: var(--pal-text);
     color: var(--pal-light);
     z-index: 10;
     text-align: center;
@@ -104,29 +104,26 @@
     display: none;
   }
   input[type="checkbox"] + label {
-    color: #ddd;
+    color: var(--pal-border-soft);
     border-radius: calc(var(--spacing) / 2);
     padding: calc(var(--spacing) / 2);
-    box-shadow: #ccc 2px 2px 3px;
+    box-shadow: var(--pal-shadow) 2px 2px 3px;
   }
   label.textLabel {
-    color: #444;
+    color: var(--pal-text);
     position: absolute;
     transform: translate(1em, -0.6em);
     padding-left: calc(var(--spacing) / 2);
     padding-right: calc(var(--spacing) / 2);
-    background-color: white;
+    background-color: var(--pal-light);
     overflow: hidden;
     max-width: 20ch;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
   input:checked + label {
-    color: var(--pal-success);
-    box-shadow: #ccc 1px 1px 2px;
-  }
-  input:invalid {
-    color: var(--pal-error);
+    color: var(--pal-info);
+    box-shadow: var(--pal-border) 1px 1px 2px;
   }
   input:invalid {
     color: var(--pal-error);

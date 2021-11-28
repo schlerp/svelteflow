@@ -5,14 +5,25 @@
     --cg-blue: #227c9dff;
     --light-sea-green: #17c3b2ff;
     --maximum-yellow-red: #ffcb77ff;
-    --floral-white: #fef9efff;
     --light-coral: #fe6d73ff;
+    --pal-light: #fef9ef;
 
     --pal-info: var(--cg-blue);
-    --pal-light: var(--floral-white);
     --pal-success: var(--light-sea-green);
     --pal-warning: var(--maximum-yellow-red);
     --pal-error: var(--light-coral);
+
+    --pal-text-light: #fef9ef;
+    --pal-text-soft: #ccc;
+    --pal-text: #333;
+    --pal-text-dark: #1e1e1e;
+
+    --pal-border-light: #fef9ef;
+    --pal-border-soft: #ccc;
+    --pal-border: #aaa;
+    --pal-border-hard: #1e1e1e;
+
+    --pal-shadow: #cccccccc;
 
     /* ========= SPACING ========= */
     --spacing: 8px;

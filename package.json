@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "@jsplumb/browser-ui": "^5.0.8",
+    "@jsplumb/connector-bezier": "^5.1.1",
     "@jsplumb/core": "^5.0.8",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
